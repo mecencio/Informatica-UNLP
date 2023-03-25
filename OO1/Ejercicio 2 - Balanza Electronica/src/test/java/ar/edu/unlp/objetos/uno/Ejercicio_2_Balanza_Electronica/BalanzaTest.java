@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.balanzaElectronica;
+package ar.edu.unlp.objetos.uno.Ejercicio_2_Balanza_Electronica;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
