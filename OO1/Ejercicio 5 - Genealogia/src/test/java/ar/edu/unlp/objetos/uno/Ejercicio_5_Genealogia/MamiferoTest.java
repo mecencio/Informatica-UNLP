@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.ejercicio5;
+package ar.edu.unlp.objetos.uno.Ejercicio_5_Genealogia;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
