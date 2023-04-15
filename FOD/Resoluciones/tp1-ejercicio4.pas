@@ -1,4 +1,4 @@
-program tp1Ejercicio3;
+program tp1Ejercicio4;
 
 type
   empleado = record
@@ -40,8 +40,11 @@ end;
 procedure listarEmpleados (var a : archivo_empleado);
 var
   e : empleado;
+  num : real;
 begin
   reset(a);
+  num := fileSize(a);
+  writeln(num);
   writeln('Listado de empleados');
   while (not EOF(a)) do begin
     read(a, e);
@@ -105,6 +108,10 @@ begin
   writeln('   2.- Buscar y listar empleados segun nombre o apellido ');
   writeln('   3.- Listar todos los empleados ');
   writeln('   4.- Listar empleados mayores de 70 anios ');
+  writeln('   5.- Anidir uno o mas empleados al final del archivo');
+  writeln('   6.- Modificar la edad de uno o mas empleados');
+  writeln('   7.- Exportar el contenido del archivo a un archivo de texto');
+  writeln('   8.- Exportar los empleados que no tengan DNI cargado');
   writeln();
   write('Ingrese la opcion elegida: '); readln(opcion);
   if (opcion = '1') then crearArchivo(empleados)
