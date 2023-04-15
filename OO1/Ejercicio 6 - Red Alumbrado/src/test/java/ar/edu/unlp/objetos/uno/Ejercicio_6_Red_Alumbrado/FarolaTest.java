@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.redAlumbrado;
+package ar.edu.unlp.objetos.uno.Ejercicio_6_Red_Alumbrado;
 
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,16 +1,18 @@
 package ar.edu.unlp.objetos.uno.Ejercicio_3_Presupuestos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Presupuesto {
 	LocalDate fecha;
 	String cliente; 
-	Item[] items;
+	List<Item> items;
 	
 	public Presupuesto () {
 		this.fecha = LocalDate.now();
 		this.cliente = "";
-		this.items = new Item[10];
+		this.items = new ArrayList<Item>();
 	}
 	
 	public LocalDate getFecha () {
@@ -31,16 +33,20 @@ public class Presupuesto {
 		return this;
 	}
 	
-	public Item[] getItems () {
+	public List<Item> getItems () {
 		return this.items;
 	}
 	
 	public void agregarItem ( Item item ) {
-		
+		this.items.add(item);
 	}
 	
 	public double calcularTotal() {
-		return 0;
+		int total = 0;
+		for (int i = 0; i < this.items.size(); i++) {
+			total += this.items.get(i).costo();
+		}
+		return total;
 	}
 	
 }
