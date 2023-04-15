@@ -9,7 +9,7 @@ type
     dni : integer;
   end;
   archivo_empleado = file of empleado;
-
+  
 procedure leer (var e : empleado);
 begin
  with e do begin
@@ -40,11 +40,8 @@ end;
 procedure listarEmpleados (var a : archivo_empleado);
 var
   e : empleado;
-  num : real;
 begin
   reset(a);
-  num := fileSize(a);
-  writeln(num);
   writeln('Listado de empleados');
   while (not EOF(a)) do begin
     read(a, e);
@@ -90,6 +87,72 @@ begin
   close(a);
 end;
 
+procedure agregarAlFinal (var a : archivo_empleado);
+var
+  e1, e2 : empleado;
+  encontrado : boolean;
+begin
+  encontrado := false;
+  reset(a);
+  leer(e1);
+  while (not EOF(a)) do begin
+    read(a, e2);
+    if (e2.numEmpleado = e1.numEmpleado) then
+      encontrado := true;
+  end;
+  if (encontrado) then begin
+    writeln();
+    writeln('La persona ya se encuentra en el listado')
+  end
+  else begin
+    write(a, e1);
+    writeln();
+    writeln('Persona agregada correctamente');
+  end;
+  close(a);
+  writeln();
+  writeln('------------------');
+  writeln('Proceso finalizado');
+  writeln('------------------');
+  writeln();
+end;
+
+procedure modificarEdad (var a : archivo_empleado);
+var
+  e, nuEmpleado : empleado;
+  aux : archivo_empleado;
+  ruta : string;
+begin
+  ruta := 'C:\Users\nicol\OneDrive\Documentos\Facu\FOD\Resoluciones\aux.dat';
+  assign(aux, ruta);
+  writeln('Ingrese las personas que desea modificar la edad');
+  writeln('Debe estar ordenada por numero de empleado');
+  crearArchivo(aux);
+  reset(a);
+  reset(aux);
+  while(not EOF(a) and not EOF(aux)) do begin
+    read(a, e);
+    read(aux, nuEmpleado);
+    if (e.numEmpleado = nuEmpleado.numEmpleado) then begin
+      seek(a, filePos(a)-1);
+      e.edad := nuEmpleado.edad;
+      write(a, e);
+    end
+    else if (e.numEmpleado > nuEmpleado.numEmpleado) then begin
+      read(aux, nuEmpleado);
+    end
+    else begin
+      read(a, e);
+    end;
+  end;
+  close(a);
+  writeln();
+  writeln('------------------');
+  writeln('Proceso finalizado');
+  writeln('------------------');
+  writeln();
+end;
+
 var
   nomArchivo, ruta, opcion : string;
   empleados : archivo_empleado;
@@ -108,7 +171,7 @@ begin
   writeln('   2.- Buscar y listar empleados segun nombre o apellido ');
   writeln('   3.- Listar todos los empleados ');
   writeln('   4.- Listar empleados mayores de 70 anios ');
-  writeln('   5.- Anidir uno o mas empleados al final del archivo');
+  writeln('   5.- Aniadir uno o mas empleados al final del archivo');
   writeln('   6.- Modificar la edad de uno o mas empleados');
   writeln('   7.- Exportar el contenido del archivo a un archivo de texto');
   writeln('   8.- Exportar los empleados que no tengan DNI cargado');
@@ -118,5 +181,7 @@ begin
   else if (opcion = '2') then listarEmpleadosBuscados(empleados)
   else if (opcion = '3') then listarEmpleados(empleados)
   else if (opcion = '4') then listarEmpleadosMayores(empleados)
+  else if (opcion = '5') then agregarAlFinal(empleados)
+  else if (opcion = '6') then modificarEdad(empleados)
   else writeln('La opcion no es correcta');
 end.
