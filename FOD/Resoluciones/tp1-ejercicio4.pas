@@ -90,11 +90,19 @@ end;
 procedure agregarAlFinal (var a : archivo_empleado);
 var
   e1, e2 : empleado;
+  aux : archivo_empleado;
   encontrado : boolean;
+  ruta : string;
 begin
+  ruta := 'C:\Program Files\Facu\FOD\Resoluciones\aux.dat';
+  assing(aux, ruta);
   encontrado := false;
+  writeln('Ingrese las personas que desea agregar al final');
+  writeln('Respete el orden por numero de empleado. Los repetidos no se volveran a ingresar');
+  writeln('Ingrese el apellido "fin" para finalizar la carga de empleados a modificar');
+  crearArchivo(aux);
   reset(a);
-  leer(e1);
+  reset(aux);
   while (not EOF(a)) do begin
     read(a, e2);
     if (e2.numEmpleado = e1.numEmpleado) then
@@ -107,7 +115,7 @@ begin
   else begin
     write(a, e1);
     writeln();
-    writeln('Persona agregada correctamente');
+    writeln('Persona/s agregada correctamente');
   end;
   close(a);
   writeln();
@@ -123,7 +131,7 @@ var
   aux : archivo_empleado;
   ruta : string;
 begin
-  ruta := 'C:\Users\nico_\OneDrive\Documentos\Facu\FOD\Resoluciones\aux.dat';
+  ruta := 'C:\Program Files\Facu\FOD\Resoluciones\aux.dat';
   assign(aux, ruta);
   writeln('Ingrese las personas que desea modificar la edad');
   writeln('Debe estar ordenada por numero de empleado');
@@ -169,7 +177,7 @@ begin
   writeln();
   write('Ingrese el nombre del archivo que desea crear o utilizar: '); readln(nomArchivo);
   writeln();writeln();
-  ruta := 'C:\Users\nico_\OneDrive\Documentos\Facu\FOD\Resoluciones\' + nomArchivo + '.dat';
+  ruta := 'C:\Program Files\Facu\FOD\Resoluciones\' + nomArchivo + '.dat';
   assign(empleados, ruta);
   writeln('-----------------------------------------------');
   writeln('Opciones: ');
@@ -192,4 +200,5 @@ begin
   else if (opcion = '5') then agregarAlFinal(empleados)
   else if (opcion = '6') then modificarEdad(empleados)
   else writeln('La opcion no es correcta');
+  readln();
 end.
