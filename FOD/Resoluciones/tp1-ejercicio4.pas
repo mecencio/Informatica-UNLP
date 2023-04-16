@@ -123,28 +123,36 @@ var
   aux : archivo_empleado;
   ruta : string;
 begin
-  ruta := 'C:\Users\nicol\OneDrive\Documentos\Facu\FOD\Resoluciones\aux.dat';
+  ruta := 'C:\Users\nico_\OneDrive\Documentos\Facu\FOD\Resoluciones\aux.dat';
   assign(aux, ruta);
   writeln('Ingrese las personas que desea modificar la edad');
   writeln('Debe estar ordenada por numero de empleado');
+  writeln('Ingrese el apellido "fin" para finalizar la carga de empleados a modificar');
   crearArchivo(aux);
   reset(a);
   reset(aux);
-  while(not EOF(a) and not EOF(aux)) do begin
+  nuEmpleado.numEmpleado := -1;
+  while(not EOF(a)) do begin
     read(a, e);
-    read(aux, nuEmpleado);
-    if (e.numEmpleado = nuEmpleado.numEmpleado) then begin
-      seek(a, filePos(a)-1);
-      e.edad := nuEmpleado.edad;
-      write(a, e);
-    end
-    else if (e.numEmpleado > nuEmpleado.numEmpleado) then begin
+	while (not EOF(aux) and ((nuEmpleado.numEmpleado = -1) or (nuEmpleado.numEmpleado <= e.numEmpleado))) do begin
+	  if (nuEmpleado.numEmpleado = e.numEmpleado) then begin
+	    e.edad := nuEmpleado.edad;
+	    seek(a, filePos(a)-1);
+	    write(a, e);
+	  end;
       read(aux, nuEmpleado);
-    end
-    else begin
-      read(a, e);
-    end;
+	end;
+	if (EOF(aux)) then begin
+	  if (nuEmpleado.numEmpleado = e.numEmpleado) then begin
+	    e.edad := nuEmpleado.edad;
+	    seek(a, filePos(a)-1);
+	    write(a, e);
+	  end;
+	  if (e.numEmpleado > nuEmpleado.numEmpleado) then
+	    seek(a, fileSize(a));
+	end;
   end;
+  close(aux);
   close(a);
   writeln();
   writeln('------------------');
@@ -161,7 +169,7 @@ begin
   writeln();
   write('Ingrese el nombre del archivo que desea crear o utilizar: '); readln(nomArchivo);
   writeln();writeln();
-  ruta := 'C:\Users\nicol\OneDrive\Documentos\Facu\FOD\Resoluciones\' + nomArchivo + '.dat';
+  ruta := 'C:\Users\nico_\OneDrive\Documentos\Facu\FOD\Resoluciones\' + nomArchivo + '.dat';
   assign(empleados, ruta);
   writeln('-----------------------------------------------');
   writeln('Opciones: ');
