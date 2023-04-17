@@ -1,0 +1,3 @@
+12000 Samsung
+1520 desc
+A20

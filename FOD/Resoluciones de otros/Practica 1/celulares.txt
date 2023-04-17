@@ -1,0 +1,6 @@
+12000 Samsung
+1520 desc
+A20
+20350Motorola
+1520motog52
+Moto G52

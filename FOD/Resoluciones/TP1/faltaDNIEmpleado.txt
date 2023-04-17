@@ -1,0 +1,2 @@
+nro: 6apellido y nombre: Rivas Santiago edad: 32 DNI: 0
+nro: 7apellido y nombre: Suarez Rodrigo edad: 34 DNI: 0
