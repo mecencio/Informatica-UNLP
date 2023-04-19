@@ -1,0 +1,12 @@
+1 2000 Motorola
+22 20 GamaMedia
+MotoG
+2 1000 Motorola
+18 20 GamaBaja
+MotoE
+3 3000 Motorola
+16 20 GamaAlta
+MotoD
+4 800 Motorola
+50 20 GamaBaja
+MotoC
