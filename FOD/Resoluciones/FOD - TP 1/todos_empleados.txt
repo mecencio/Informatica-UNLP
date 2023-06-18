@@ -1,0 +1,8 @@
+1	Temprano	Nicolas	28	38866273
+2	Temprano	Agustin	26	39743375
+3	Barragan	Daniela	28	37365575
+4	Lasala	Nicolas	29	38846678
+5	Temprano	Victor	75	10564897
+6	De gaitano	Nilda	70	15421789
+7	Vazquez	Maria	36	0
+8	Rivas	Santiago	33	0

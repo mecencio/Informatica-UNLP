@@ -1,0 +1,6 @@
+4 3200.00 Samsung
+0 50 Gama Alta
+Samsung S23
+5 2700.00 Samsung
+0 30 Gama Alta
+Samsung S22
