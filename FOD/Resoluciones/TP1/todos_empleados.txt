@@ -1,7 +1,0 @@
-nro: 1apellido y nombre: Temprano Nicolas edad: 27 DNI: 1
-nro: 2apellido y nombre: Temprano Agustin edad: 26 DNI: 2
-nro: 3apellido y nombre: Barragan Daniela edad: 28 DNI: 3
-nro: 4apellido y nombre: Lasala Nicolas edad: 28 DNI: 4
-nro: 5apellido y nombre: Vazquez Maria edad: 36 DNI: 5
-nro: 6apellido y nombre: Rivas Santiago edad: 32 DNI: 0
-nro: 7apellido y nombre: Suarez Rodrigo edad: 34 DNI: 0
